@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import styles from './page.module.css'
+import styles from '../page.module.css'
 import Homework from '@/components/Homework'
 import Footer from '@/components/Footer'
 

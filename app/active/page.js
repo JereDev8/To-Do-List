@@ -1,11 +1,11 @@
 
 import Link from 'next/link'
-import styles from './page.module.css'
+import styles from '../page.module.css'
 import Homework from '@/components/Homework'
 import Footer from '@/components/Footer'
 
 const getTasks = async ()=>{
-    const tasks= await fetch('http://localhost:3000/api/tasks',{
+    const tasks= await fetch('http://localhost:3000/api/tasks/active',{
       cache:'no-store'
     })
     return tasks
@@ -25,11 +25,11 @@ export default async function Home() {
           <Link className={styles.linkCreate} href='/create'>Create Task</Link>
           </div>
           {
-            tasks.map((task)=>{
+            tasks.tasksActive.map((task)=>{
               return <Homework check={task.completed} ident={task._id} key={task._id} homework={task.description}/>
             })
           }
-          <Footer QItems={tasks.length}/>
+          <Footer QItems={tasks.tasksActive.length}/>
         </div>
     </div>
   )
